@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cupid - Connecting...</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. HIGH GRAPHIC BINARY INTRO SCREEN -->
+    <div id="intro-matrix" class="matrix-overlay">
+        <div class="binary-stream">
+            01101100 01101111 01110110 01100101 00100000 01110011 01111001 01110011 01110100 01100101 01101101<br>
+            01001001 01001110 01001001 01010100 01001001 01000001 01001100 01001001 01011010 01001001 01001110 01000111<br>
+            10101011 11001101 00110011 11010110 11001101 00110011 11010110 10101011 11001101 00110011 11010110<br>
+            01110011 01100101 01100001 01110010 01100011 01101000 01101001 01101110 01100111 01100110 01101111 01110010 01101101 01100001 01110100 01100011 01101000<br>
+            01101100 01101111 01110110 01100101 00100000 01110011 01111001 01110011 01110100 01100101 01101101<br>
+            01001001 01001110 01001001 01010100 01001001 01000001 01001100 01001001 01011010 01001001 01001110 01000111
+        </div>
+        <div class="glitch-text">INJECTING AI SOUL_</div>
+    </div>
+
+    <!-- 2. MAIN HOME SCREEN (Hidden initially behind the matrix) -->
+    <div class="container main-content">
+        <h1>Welcome to <span class="neon-text">AI Cupid</span></h1>
+        <p>System Online. Pick your perfect AI partner and start chatting instantly.</p>
+        <a href="selection.html" class="btn-primary">Find My Match 💖</a>
+    </div>
+
+    <script>
+        // After 3 seconds, fade out the matrix screen completely
+        setTimeout(() => {
+            const matrix = document.getElementById('intro-matrix');
+            matrix.style.opacity = '0';
+            setTimeout(() => matrix.remove(), 1000); // Completely remove it from background
+        }, 3000);
+    </script>
+</body>
+</html>

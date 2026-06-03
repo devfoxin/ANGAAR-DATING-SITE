@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your AI Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CHARACTER SELECTION VIEW -->
+    <div id="selection-view" class="container">
+        <h2>Choose Your <span class="neon-text">AI Companion</span></h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Aria (The Gamer GF)</h3>
+                <p>"Let's carry the lobby and talk about anime all night!"</p>
+                <!-- Custom trigger function instead of a direct link -->
+                <button onclick="startSync('gamer_gf')" class="btn-select">Match with Aria</button>
+            </div>
+            <div class="card">
+                <h3>Ethan (The Sweet BF)</h3>
+                <p>"Always here to listen to your day and send you late-night music."</p>
+                <button onclick="startSync('sweet_bf')" class="btn-select">Match with Ethan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECONDARY LOADING SCREEN (Hidden by default) -->
+    <div id="sync-loader" class="loader-overlay hidden">
+        <div class="spinner"></div>
+        <h2 class="neon-text dynamic-glow">SYNCHRONIZING CONSCIOUSNESS...</h2>
+        <p id="loading-status">Establishing secure neural link...</p>
+    </div>
+
+    <script>
+        function startSync(botId) {
+            // Hide selection view, reveal loading view
+            document.getElementById('selection-view').classList.add('hidden');
+            const loader = document.getElementById('sync-loader');
+            loader.classList.remove('hidden');
+
+            // Fun dynamic text changes while loading
+            setTimeout(() => {
+                document.getElementById('loading-status').innerText = "Calibrating emotional responses...";
+            }, 1200);
+
+            // After 3 seconds, launch the actual AI chat page
+            setTimeout(() => {
+                window.location.href = `chat.html?bot=${botId}`;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

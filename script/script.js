@@ -4,8 +4,8 @@
  */
 
 // 1. ENVIRONMENT CONFIGURATION
-const API_KEY = "YOUR_GEMINI_API_KEY"; // ⚠️ Replace with your actual key from Google AI Studio
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+const API_KEY = "AQ.Ab8RN6LrurYa2tYCXcEH7m17DwCZNHiOhy7vqZfwbx84nrS_5w"; // ⚠️ Replace with your actual key from Google AI Studio
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;;
 
 // 2. PARSE SELECTED COMPANION FROM URL
 const urlParams = new URLSearchParams(window.location.search);

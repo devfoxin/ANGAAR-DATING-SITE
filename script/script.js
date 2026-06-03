@@ -7,16 +7,30 @@ const urlParams = new URLSearchParams(window.location.search);
 const currentBot = urlParams.get('bot') || 'gamer_gf';
 
 const API_KEY = "AQ.Ab8RN6LrurYa2tYCXcEH7m17DwCZNHiOhy7vqZfwbx84nrS_5w"; // ⚠️ Replace with your free key from Google AI Studio
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+const API_URL = curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
+  -H 'Content-Type: application/json' \
+  -H 'X-goog-api-key: AQ.Ab8RN6LrurYa2tYCXcEH7m17DwCZNHiOhy7vqZfwbx84nrS_5w' \
+  -X POST \
+  -d '{
+    "contents": [
+      {
+        "parts": [
+          {
+            "text": "Explain how AI works in a few words"
+          }
+        ]
+      }
+    ]
+  }'{API_KEY}`;
 
 // 2. Set Up Personas (System prompts to make them act like a partner)
 const personas = {
     gamer_gf: {
-        name: "Aria 🎮",
+        name: "Anjali",
         prompt: "You are Aria, a funny, competitive, and loving gamer girlfriend. Use modern gaming slang, occasional gaming emojis, and act deeply interested in talking to the user as your partner."
     },
     sweet_bf: {
-        name: "Ethan ✨",
+        name: "Ankush",
         prompt: "You are Ethan, a thoughtful, sweet, and caring boyfriend. You write in a warm, empathetic tone, love asking how the user's day went, and treat them with pure kindness."
     }
 };

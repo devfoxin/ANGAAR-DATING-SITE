@@ -145,3 +145,47 @@ function appendMessage(text, className) {
     chatBox.scrollTop = chatBox.scrollHeight; // Auto scroll to bottom
     return msgDiv;
 }
+
+async function sendMessage() {
+    const inputEl = document.getElementById('user-input');
+    const userText = inputEl.value.trim();
+    if (!userText) return;
+
+    appendMessage(userText, 'user-msg');
+    inputEl.value = '';
+
+    const loadingDiv = appendMessage("Thinking...", 'bot-msg');
+
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json" 
+            },
+            body: JSON.stringify({
+                contents: [{ 
+                    parts: [{ text: `${personas[currentBot].prompt}\n\nUser: ${userText}` }] 
+                }]
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`API Status Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        // Extra check to make sure the data structure exists before reading it
+        if (data.candidates && data.candidates[0].content.parts[0].text) {
+            const aiResponse = data.candidates[0].content.parts[0].text;
+            loadingDiv.remove(); 
+            appendMessage(aiResponse, 'bot-msg');
+        } else {
+            throw new Error("Invalid response format received from AI.");
+        }
+
+    } catch (error) {
+        loadingDiv.innerText = "Connection error... try again!";
+        console.error("Full Error Details:", error);
+    }
+}
